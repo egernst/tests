@@ -25,6 +25,8 @@ case "${CI_JOB}" in
 		sudo -E PATH="$PATH" CRI_RUNTIME="containerd" bash -c "make kubernetes"
 		echo "INFO: Running vcpus test"
 		sudo -E PATH="$PATH" CRI_RUNTIME="containerd" bash -c "make vcpus"
+		echo "INFO: Running sandbox mount tests"
+		sudo -E PATH="$PATH" KATA_HYPERVISOR=qemu bash -c "make mounts"
 		echo "INFO: Skipping pmem test: Issue: https://github.com/kata-containers/tests/issues/3223"
 		# echo "INFO: Running pmem integration test"
 		# sudo -E PATH="$PATH" CRI_RUNTIME="containerd" bash -c "make pmem"
